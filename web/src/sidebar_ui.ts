@@ -467,12 +467,8 @@ export function initialize_right_sidebar(): void {
 
 function get_header_rows_selectors(): string {
     return (
-        // Views header.
-        "#left-sidebar-navigation-area:not(.hidden-by-filters) #views-label-container, " +
         // DM Headers
-        "#direct-messages-section-header, " +
-        // All channel headers.
-        ".stream-list-section-container:not(.no-display) .stream-list-subsection-header"
+        "#direct-messages-section-header, "
     );
 }
 

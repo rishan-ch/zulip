@@ -72,76 +72,76 @@ function register_toggle_unread_message_count(
 
 export function initialize(): void {
     // Starred messages popover
-    popover_menus.register_popover_menu(".starred-messages-sidebar-menu-icon", {
-        ...popover_menus.left_sidebar_tippy_options,
-        onMount(instance) {
-            const $popper = $(instance.popper);
-            popover_menus.popover_instances.starred_messages = instance;
-            assert(instance.reference instanceof HTMLElement);
-            ui_util.show_left_sidebar_menu_icon(instance.reference);
+    // popover_menus.register_popover_menu(".starred-messages-sidebar-menu-icon", {
+    //     ...popover_menus.left_sidebar_tippy_options,
+    //     onMount(instance) {
+    //         const $popper = $(instance.popper);
+    //         popover_menus.popover_instances.starred_messages = instance;
+    //         assert(instance.reference instanceof HTMLElement);
+    //         ui_util.show_left_sidebar_menu_icon(instance.reference);
 
-            $popper.one("click", "#unstar_all_messages", () => {
-                starred_messages_ui.confirm_unstar_all_messages();
-                popover_menus.hide_current_popover_if_visible(instance);
-            });
-            $popper.one("click", "#toggle_display_starred_msg_count", () => {
-                const starred_msg_counts = user_settings.starred_message_counts;
-                const data = {
-                    starred_message_counts: JSON.stringify(!starred_msg_counts),
-                };
-                void channel.patch({
-                    url: "/json/settings",
-                    data,
-                });
-                popover_menus.hide_current_popover_if_visible(instance);
-            });
-        },
-        onShow(instance) {
-            popovers.hide_all();
-            const show_unstar_all_button = starred_messages.get_count() > 0;
+    //         $popper.one("click", "#unstar_all_messages", () => {
+    //             starred_messages_ui.confirm_unstar_all_messages();
+    //             popover_menus.hide_current_popover_if_visible(instance);
+    //         });
+    //         $popper.one("click", "#toggle_display_starred_msg_count", () => {
+    //             const starred_msg_counts = user_settings.starred_message_counts;
+    //             const data = {
+    //                 starred_message_counts: JSON.stringify(!starred_msg_counts),
+    //             };
+    //             void channel.patch({
+    //                 url: "/json/settings",
+    //                 data,
+    //             });
+    //             popover_menus.hide_current_popover_if_visible(instance);
+    //         });
+    //     },
+    //     onShow(instance) {
+    //         popovers.hide_all();
+    //         const show_unstar_all_button = starred_messages.get_count() > 0;
 
-            instance.setContent(
-                ui_util.parse_html(
-                    render_left_sidebar_starred_messages_popover({
-                        show_unstar_all_button,
-                        starred_message_counts: user_settings.starred_message_counts,
-                    }),
-                ),
-            );
-        },
-        onHidden(instance) {
-            instance.destroy();
-            popover_menus.popover_instances.starred_messages = null;
-            ui_util.hide_left_sidebar_menu_icon();
-        },
-    });
+    //         instance.setContent(
+    //             ui_util.parse_html(
+    //                 render_left_sidebar_starred_messages_popover({
+    //                     show_unstar_all_button,
+    //                     starred_message_counts: user_settings.starred_message_counts,
+    //                 }),
+    //             ),
+    //         );
+    //     },
+    //     onHidden(instance) {
+    //         instance.destroy();
+    //         popover_menus.popover_instances.starred_messages = null;
+    //         ui_util.hide_left_sidebar_menu_icon();
+    //     },
+    // });
 
     // Drafts popover
-    popover_menus.register_popover_menu(".drafts-sidebar-menu-icon", {
-        ...popover_menus.left_sidebar_tippy_options,
-        onMount(instance) {
-            const $popper = $(instance.popper);
-            $popper.addClass("drafts-popover");
-            popover_menus.popover_instances.drafts = instance;
-            assert(instance.reference instanceof HTMLElement);
-            ui_util.show_left_sidebar_menu_icon(instance.reference);
+    // popover_menus.register_popover_menu(".drafts-sidebar-menu-icon", {
+    //     ...popover_menus.left_sidebar_tippy_options,
+    //     onMount(instance) {
+    //         const $popper = $(instance.popper);
+    //         $popper.addClass("drafts-popover");
+    //         popover_menus.popover_instances.drafts = instance;
+    //         assert(instance.reference instanceof HTMLElement);
+    //         ui_util.show_left_sidebar_menu_icon(instance.reference);
 
-            $popper.one("click", "#delete_all_drafts_sidebar", () => {
-                drafts.confirm_delete_all_drafts();
-                popover_menus.hide_current_popover_if_visible(instance);
-            });
-        },
-        onShow(instance) {
-            popovers.hide_all();
+    //         $popper.one("click", "#delete_all_drafts_sidebar", () => {
+    //             drafts.confirm_delete_all_drafts();
+    //             popover_menus.hide_current_popover_if_visible(instance);
+    //         });
+    //     },
+    //     onShow(instance) {
+    //         popovers.hide_all();
 
-            instance.setContent(ui_util.parse_html(render_left_sidebar_drafts_popover({})));
-        },
-        onHidden(instance) {
-            instance.destroy();
-            popover_menus.popover_instances.drafts = null;
-            ui_util.hide_left_sidebar_menu_icon();
-        },
-    });
+    //         instance.setContent(ui_util.parse_html(render_left_sidebar_drafts_popover({})));
+    //     },
+    //     onHidden(instance) {
+    //         instance.destroy();
+    //         popover_menus.popover_instances.drafts = null;
+    //         ui_util.hide_left_sidebar_menu_icon();
+    //     },
+    // });
 
     // Inbox popover
     popover_menus.register_popover_menu(".inbox-sidebar-menu-icon", {
