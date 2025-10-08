@@ -1366,12 +1366,12 @@ export function searching(): boolean {
 }
 
 export function clear_search(): void {
-    const $filter = $(".left-sidebar-search-input").expectOne();
-    if ($filter.val() !== "") {
-        $filter.val("");
-        $filter.trigger("input");
-    }
-    $filter.trigger("blur");
+    // const $filter = $(".left-sidebar-search-input").expectOne();
+    // if ($filter.val() !== "") {
+    //     $filter.val("");
+    //     $filter.trigger("input");
+    // }
+    // $filter.trigger("blur");
 }
 
 export let scroll_stream_into_view = function ($stream_li: JQuery): void {

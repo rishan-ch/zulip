@@ -338,10 +338,10 @@ export function enable_element_and_remove_tooltip($element: JQuery): void {
 }
 
 export function get_left_sidebar_search_term(): string {
-    const $search_box = $<HTMLInputElement>("input.left-sidebar-search-input").expectOne();
-    const search_term = $search_box.val();
-    assert(search_term !== undefined);
-    return search_term.trim();
+    // const $search_box = $<HTMLInputElement>("input.left-sidebar-search-input").expectOne();
+    // const search_term = $search_box.val();
+    // assert(search_term !== undefined);
+    return "Search is commented out";
 }
 
 export function disable_left_sidebar_search(): void {
