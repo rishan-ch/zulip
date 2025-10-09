@@ -25,7 +25,7 @@ export function launch(): void {
             show_check_icon: true,
         });
     });
-
+    
     const zulip_merge_base_clipboard = new ClipboardJS("#about-zulip .zulip-merge-base");
     zulip_merge_base_clipboard.on("success", (e) => {
         assert(e.trigger instanceof HTMLElement);
@@ -43,3 +43,5 @@ export function initialize(): void {
     });
     $("#about-zulip-modal-container").append($(rendered_about_zulip));
 }
+
+
